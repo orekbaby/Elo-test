@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useWeb3React } from '@web3-react/core';
 import ERC20Balance from './components/ERC20Balance';

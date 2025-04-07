@@ -73,31 +73,30 @@ const Navbar = ({
 
         {comingSoonLink.map((link) => (
           <Button
-            key={link}
-            disabled
+            key={link.label}
+            component={NavLink}
+            activeClassName="activeNavLink"
+            to={link.href} // Update to use `link.href`
+            exact
             color="inherit"
             size="large"
             sx={{ fontWeight: 500, borderRadius: 5 }}
           >
             <Badge
-              key={link}
               badgeContent={
                 <span
-                  style={{
-                    color: 'rgba(255, 255, 255, .8)',
-                    fontWeight: 500,
-                    letterSpacing: 1,
-                  }}
+                  style={{ color: 'rgba(255, 255, 255, .8)', fontWeight: 500, letterSpacing: 1 }}
                 >
                   SOON
                 </span>
               }
               color="primary"
             >
-              {link}
+              {link.label}
             </Badge>
           </Button>
         ))}
+
         <Fragment>
           <Button
             color="inherit"

@@ -96,9 +96,15 @@ const SideDrawer = ({
           </ListItemButton>
 
           {comingSoonLink.map((link) => (
-            <ListItem key={link} sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-              <ListItemText primary={link} sx={{ opacity: 0.3 }} />
-            </ListItem>
+            <ListItemButton
+              component={Link}
+              to={link.href} // Use `link.href`
+              key={link.href}
+              selected={router.pathname === link.href}
+              onClick={onClose}
+            >
+              <ListItemText primary={link.label} />
+            </ListItemButton>
           ))}
         </List>
         <Divider light />

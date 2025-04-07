@@ -1,21 +1,27 @@
+/* Dark Theme Styles */
+
+:root {
+  --primary-bg: #121212;
+  --secondary-bg: #1e1e1e;
+  --accent: #bb86fc;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --border-color: #292929;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
-}
-
-p {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  background-color: var(--primary-bg);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
 }
 
 a,
 a:hover {
-  color: inherit;
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -28,47 +34,47 @@ a.MuiButton-contained:hover {
 }
 
 .activeNavLink {
-  background-color: #f2f2f2 !important;
+  background-color: var(--secondary-bg) !important;
   pointer-events: none;
 }
 
 .rounded {
   border-radius: 25px;
+  border: 1px solid var(--border-color);
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+input,
+button,
+select,
+textarea {
+  background-color: var(--secondary-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: 5px;
 }
 
-/* Firefox */
-input[type='number'] {
-  -moz-appearance: textfield;
+input:focus,
+button:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 5px var(--accent);
 }
 
 .fadeInUp {
   animation: fadeInUp 0.3s ease;
 }
 
-.MuiSnackbarContent-message {
-  max-width: 300px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 @keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: translate(0, 20px);
-    -webkit-transform: translate(0, 20px);
+    transform: translateY(20px);
   }
   100% {
     opacity: 1;
-    transform: translate(0, 0);
-    -webkit-transform: translate(0, 0);
+    transform: translateY(0);
   }
 }
 
@@ -77,7 +83,6 @@ input[type='number'] {
   height: 10px;
   border-radius: 50%;
   box-shadow: 0 0 0 rgba(220, 53, 69, 1);
-  -webkit-animation: pulse 2s infinite;
   animation: pulse 2s infinite;
   border: 3px solid rgba(255, 255, 255, 0.7);
 }

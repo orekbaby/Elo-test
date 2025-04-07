@@ -11,13 +11,25 @@ import { ethers } from 'ethers';
 
 const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
     primary: {
-      //main: '#1a90ff',
-      main: '#1cac1d',
+      main: 'hsl(var(--primary))',
+      contrastText: 'hsl(var(--primary-foreground))',
     },
-    neutral: {
-      main: '#f8f9f9',
+    secondary: {
+      main: 'hsl(var(--secondary))',
+      contrastText: 'hsl(var(--secondary-foreground))',
+    },
+    background: {
+      default: 'linear-gradient(to right, #0f0f10, #1a1a1d)',
+      paper: 'hsl(var(--card))',
+    },
+    text: {
+      primary: 'hsl(var(--foreground))',
+      secondary: 'hsl(var(--muted-foreground))',
+    },
+    action: {
+      hover: 'rgba(255, 255, 255, 0.1)',
     },
   },
   typography: {
@@ -26,14 +38,24 @@ const theme = createTheme({
   components: {
     MuiButton: {
       styleOverrides: {
-        text: {
-          fontWeight: 600,
-          textTransform: 'inherit',
-        },
-        contained: {
+        root: {
           fontWeight: 700,
           textTransform: 'inherit',
           borderRadius: 25,
+          padding: '10px 20px',
+          transition: '0.3s ease-in-out',
+        },
+        contained: {
+          background: 'linear-gradient(135deg, hsl(var(--chart-1)), hsl(var(--chart-2)))',
+          '&:hover': {
+            background: 'linear-gradient(135deg, hsl(var(--chart-3)), hsl(var(--chart-4)))',
+          },
+        },
+        outlined: {
+          borderColor: 'hsl(var(--border))',
+          '&:hover': {
+            background: 'hsl(var(--muted))',
+          },
         },
       },
     },

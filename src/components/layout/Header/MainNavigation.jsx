@@ -31,7 +31,7 @@ const presaleLink = {
 // }
 
 //const comingSoonLink = ["Swap", "Mint", "Stake"];
-const comingSoonLink = ['Stake'];
+const comingSoonLink = [{ label: 'Stake', href: '/stake' }];
 
 const moreMenuLinks = [
   // { label: "Transactions", href: "/transactions" },
@@ -60,7 +60,7 @@ const MainNavigation = () => {
         elevation={0}
         sx={{ bgcolor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(20px)' }}
       >
-        <Toolbar sx={{ borderBottom: 1, borderColor: 'grey.100' }}>
+        <Toolbar sx={{ borderBottom: 0, borderColor: '' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"

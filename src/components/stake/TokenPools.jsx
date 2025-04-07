@@ -40,11 +40,12 @@ const TokenPools = () => {
     <Grid container spacing={0} justifyContent="center">
       <Grid item xs={12} md={5}>
         <Card
-          elevation={0}
+          elevation={4}
           sx={{
             borderRadius: 10,
-            p: 1,
-            boxShadow: '0 2px 16px rgb(53 69 89 / 5%)',
+            p: 2,
+            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)',
+            backgroundColor: 'background.paper',
           }}
         >
           <CardContent>
@@ -53,14 +54,14 @@ const TokenPools = () => {
               sx={{ fontWeight: 'bold', mb: 4, textAlign: 'center' }}
               variant="h5"
             >
-              staking pool
+              Staking Pool
             </Typography>
             {stakingPoolData.map((item, i) => (
               <Stack
                 direction="row"
                 justifyContent="space-between"
                 alignItems="center"
-                mb={1}
+                mb={2}
                 key={i}
               >
                 <CardLabel text={item.label} />
@@ -72,20 +73,47 @@ const TokenPools = () => {
                 type="number"
                 id="amount-to-stake"
                 label="Amount to stake"
-                variant="standard"
+                variant="outlined"
                 fullWidth
                 value={amountToStake}
                 onChange={(e) => setAmountToStake(e.target.value)}
                 InputProps={{
                   startAdornment: <InputAdornment position="start">$</InputAdornment>,
-                  autoComplete: 'off',
                 }}
                 helperText="Maximum amount is 0"
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: 8,
+                    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+                  },
+                  '& .MuiInputLabel-root': {
+                    fontWeight: 600,
+                    color: 'text.primary',
+                  },
+                  '& .MuiFormHelperText-root': {
+                    color: 'text.secondary',
+                  },
+                  '& .MuiInputBase-input': {
+                    color: '#FFFFFF',
+                  },
+                }}
               />
             </Box>
           </CardContent>
           <CardActions>
-            <Button fullWidth>Stake</Button>
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              sx={{
+                borderRadius: 8,
+                fontWeight: 600,
+                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+                '&:hover': { boxShadow: '0 6px 16px rgba(0, 0, 0, 0.12)' },
+              }}
+            >
+              Stake
+            </Button>
           </CardActions>
         </Card>
       </Grid>
