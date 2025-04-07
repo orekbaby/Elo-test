@@ -10,32 +10,39 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import InputIcon from '@mui/icons-material/Input';
 import SendIcon from '@mui/icons-material/Send';
 
-const steps = ["Approve you've $", 'Enter an amount', 'Press stake'];
+const steps = ['Approve your tokens', 'Enter amount', 'Confirm stake'];
 const icons = [<AccountBalanceWalletIcon />, <InputIcon />, <SendIcon />];
 
 const CustomConnector = styled(StepConnector)(({ theme }) => ({
+  [`&.${stepConnectorClasses.root}`]: {
+    paddingTop: 10,
+  },
   [`& .${stepConnectorClasses.line}`]: {
     height: 3,
     border: 0,
-    background: 'linear-gradient(90deg, #8E44AD 0%, #00D4FF 100%)',
+    background: 'linear-gradient(90deg, #1a73e8 0%, #64b5f6 100%)',
     borderRadius: 1,
   },
 }));
 
 const CustomStepIconRoot = styled('div')(({ theme, ownerState }) => ({
-  backgroundColor: ownerState.completed ? '#8E44AD' : '#ccc',
+  backgroundColor: theme.palette.mode === 'dark' ? '#0a192f' : '#ccc',
   zIndex: 1,
   color: '#fff',
-  width: 50,
-  height: 50,
+  width: 44,
+  height: 44,
   display: 'flex',
   borderRadius: '50%',
   justifyContent: 'center',
   alignItems: 'center',
   transition: 'all 0.3s ease',
+  ...(ownerState.completed && {
+    background: 'linear-gradient(135deg, #1a73e8 0%, #64b5f6 100%)',
+  }),
   ...(ownerState.active && {
-    background: 'linear-gradient(135deg, #8E44AD 0%, #D355E7 100%)',
-    boxShadow: '0 4px 10px rgba(142, 68, 173, 0.5)',
+    background: 'linear-gradient(135deg, #1a73e8 0%, #64b5f6 100%)',
+    boxShadow: '0 0 0 4px rgba(26, 115, 232, 0.2)',
+    transform: 'scale(1.1)',
   }),
 }));
 
@@ -52,14 +59,15 @@ const StakeSteps = () => {
   return (
     <Box
       sx={{
-        maxWidth: '650px',
+        maxWidth: '700px',
         margin: 'auto',
-        p: 3,
+        p: 4,
         borderRadius: 3,
-        background: 'rgba(30, 30, 36, 0.4)',
-        backdropFilter: 'blur(5px)',
+        background: 'rgba(23, 42, 69, 0.5)',
+        backdropFilter: 'blur(8px)',
         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
-        border: '1px solid rgba(142, 68, 173, 0.1)',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        mb: 6,
       }}
     >
       <Stepper activeStep={-1} alternativeLabel connector={<CustomConnector />}>
@@ -68,10 +76,13 @@ const StakeSteps = () => {
             <StepLabel StepIconComponent={CustomStepIcon}>
               <Typography
                 sx={{
-                  fontWeight: 500,
+                  fontWeight: 600,
                   color: 'text.primary',
                   transition: 'all 0.3s ease',
-                  '&:hover': { color: '#00D4FF' },
+                  '&:hover': {
+                    color: '#64b5f6',
+                    transform: 'translateY(-2px)',
+                  },
                 }}
               >
                 {label}

@@ -53,7 +53,7 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "vite build",
+    "build": "NODE_OPTIONS=--max-old-space-size=4096 vite build",
     "serve": "vite preview",
     "test": "your-test-script-here",
     "deploy": "node Truffle/scripts/deployContract.js",

@@ -10,7 +10,6 @@ import StakeSteps from '../../components/stake/StakeSteps';
 import HowToStake from '../../components/stake/HowToStake';
 
 export default function Stake() {
-  // Add subtle animation effect when component mounts
   useEffect(() => {
     const fadeInElements = document.querySelectorAll('.fadeInUp');
     fadeInElements.forEach((element) => {
@@ -20,88 +19,22 @@ export default function Stake() {
 
   return (
     <Fragment>
-      <Container
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          minHeight: '40vh',
-          marginTop: 10,
-          paddingX: 2,
-          background: 'linear-gradient(135deg, #8E44AD 0%, #D355E7 100%)',
-          borderRadius: 10,
-          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
-        }}
-      >
-        <Box
-          sx={{
-            mb: 4,
-            mt: 2,
-            animation: 'fadeIn 1s ease-out',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            textAlign: 'center',
-            maxWidth: '800px',
-            paddingX: 2,
-          }}
-        >
-          <Typography
-            color="text.primary"
-            variant="h3"
-            sx={{
-              fontWeight: '900',
-              mb: 1,
-              background: 'linear-gradient(135deg, #FF6347, #FF8C00)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              textShadow: '0 0 20px rgba(142, 68, 173, 0.4)',
-              letterSpacing: '1px',
-            }}
-            component="div"
-          >
-            Staking
-          </Typography>
-          <Typography
-            variant="body1"
-            color="text.secondary"
-            sx={{
-              lineHeight: 1.6,
-              fontSize: '1.05rem',
-              textAlign: 'center',
-              maxWidth: '750px',
-              color: 'text.primary',
-              marginTop: 2,
-            }}
-          >
-            Stake $ELO to earn more $ELO. You can stake $ELO tokens in the staking pools to earn
-            high APR as a return for holding $ELO tokens.
-          </Typography>
-        </Box>
-      </Container>
-
+      {/* Hero Section - Completely Redesigned */}
       <Box
         sx={{
-          background: 'linear-gradient(to right, rgba(30, 30, 36, 0.9), rgba(35, 35, 39, 0.9))',
-          backdropFilter: 'blur(10px)',
-          py: 7,
-          borderTop: 1,
-          borderBottom: 1,
-          borderColor: alpha('#8E44AD', 0.2),
-          mb: 4,
-          boxShadow: `0 10px 30px -10px ${alpha('#000', 0.2)}`,
           position: 'relative',
           overflow: 'hidden',
+          pt: { xs: 12, md: 16 },
+          pb: { xs: 8, md: 12 },
+          background: 'linear-gradient(135deg, #0a192f 0%, #172a45 100%)',
           '&::before': {
             content: '""',
             position: 'absolute',
             top: 0,
             left: 0,
             right: 0,
-            height: '1px',
-            background: 'linear-gradient(90deg, transparent, rgba(142, 68, 173, 0.5), transparent)',
+            height: '4px',
+            background: 'linear-gradient(90deg, #1a73e8, #64b5f6)',
           },
           '&::after': {
             content: '""',
@@ -110,11 +43,137 @@ export default function Stake() {
             left: 0,
             right: 0,
             height: '1px',
-            background: 'linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent)',
+            background:
+              'linear-gradient(90deg, transparent, rgba(100, 181, 246, 0.5), transparent)',
+          },
+        }}
+      >
+        <Container maxWidth="lg">
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              textAlign: 'center',
+              position: 'relative',
+              zIndex: 1,
+            }}
+          >
+            {/* Main Heading with Modern Gradient */}
+            <Typography
+              variant="h2"
+              component="h1"
+              sx={{
+                fontWeight: 900,
+                mb: 3,
+                fontSize: { xs: '2.5rem', md: '3.5rem' },
+                lineHeight: 1.2,
+                background: 'linear-gradient(135deg, #64b5f6 10%, #1a73e8 90%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                textShadow: '0 2px 10px rgba(26, 115, 232, 0.2)',
+                letterSpacing: '-0.5px',
+                position: 'relative',
+                '&::after': {
+                  content: '"STAKING"',
+                  position: 'absolute',
+                  top: '4px',
+                  left: '4px',
+                  background: 'linear-gradient(135deg, #0a192f 10%, #172a45 90%)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  zIndex: -1,
+                },
+              }}
+            >
+              ELO Staking Platform
+            </Typography>
+
+            {/* Subheading */}
+            <Typography
+              variant="h6"
+              component="p"
+              sx={{
+                maxWidth: '700px',
+                color: 'rgba(255, 255, 255, 0.85)',
+                mb: 4,
+                fontSize: { xs: '1.1rem', md: '1.25rem' },
+                lineHeight: 1.6,
+              }}
+            >
+              Maximize your crypto holdings by staking $ELO tokens. Earn competitive rewards while
+              contributing to network security with our high-yield staking pools.
+            </Typography>
+
+            {/* Decorative Elements */}
+            <Box
+              sx={{
+                width: '100%',
+                maxWidth: '600px',
+                height: '2px',
+                background:
+                  'linear-gradient(90deg, transparent, rgba(100, 181, 246, 0.5), transparent)',
+                mb: 4,
+              }}
+            />
+          </Box>
+        </Container>
+
+        {/* Floating Particles Background */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            overflow: 'hidden',
+            zIndex: 0,
+            '& > div': {
+              position: 'absolute',
+              borderRadius: '50%',
+              background: 'rgba(100, 181, 246, 0.1)',
+            },
+          }}
+        >
+          {[...Array(15)].map((_, i) => (
+            <Box
+              key={i}
+              sx={{
+                width: Math.random() * 300 + 100,
+                height: Math.random() * 300 + 100,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                filter: 'blur(40px)',
+                opacity: 0.3,
+              }}
+            />
+          ))}
+        </Box>
+      </Box>
+
+      {/* Main Content Section */}
+      <Box
+        sx={{
+          py: 8,
+          position: 'relative',
+          background: 'linear-gradient(to bottom, #0a192f, #172a45)',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: '1px',
+            background:
+              'linear-gradient(90deg, transparent, rgba(100, 181, 246, 0.5), transparent)',
           },
         }}
       >
         <Container
+          maxWidth="lg"
           className="fadeInUp"
           sx={{
             transition: 'all 0.8s ease-out',
@@ -127,44 +186,42 @@ export default function Stake() {
           }}
         >
           <Typography
-            variant="h5"
+            variant="h4"
             component="div"
-            color="text.primary"
             sx={{
               fontWeight: 700,
-              mb: 2,
+              mb: 4,
               textAlign: 'center',
-              background: 'linear-gradient(135deg, #fff 30%, #00D4FF 100%)',
+              background: 'linear-gradient(135deg, #64b5f6 30%, #1a73e8 100%)',
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              textShadow: '0 0 20px rgba(0, 212, 255, 0.2)',
               letterSpacing: '0.5px',
             }}
           >
-            Stake $ELO tokens to earn rewards
+            Start Earning Rewards Today
           </Typography>
           <Typography
             variant="body1"
-            color="text.secondary"
             sx={{
-              mb: 4,
+              mb: 6,
               textAlign: 'center',
-              maxWidth: 600,
+              maxWidth: 700,
               mx: 'auto',
-              lineHeight: 1.6,
-              fontSize: '1rem',
+              lineHeight: 1.7,
+              fontSize: '1.1rem',
+              color: 'rgba(255, 255, 255, 0.8)',
               '& strong': {
-                color: '#00D4FF',
+                color: '#64b5f6',
                 fontWeight: 600,
               },
             }}
           >
-            Please be aware{' '}
-            <strong>estimated APRs will likely drop over time as more people join the pool</strong>.
-            First you must approve you&apos;ve $ for use on the staking contract, then enter an
-            amount and press stake.
+            <strong>Estimated APRs may decrease over time</strong> as more participants join the
+            staking pool. To begin, approve your tokens for staking, then enter your desired amount
+            and confirm the transaction.
           </Typography>
+
           <StakeSteps />
           <HowToStake />
           <TokenPools />

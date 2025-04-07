@@ -13,48 +13,79 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: 'hsl(var(--primary))',
-      contrastText: 'hsl(var(--primary-foreground))',
+      main: '#1a73e8',
+      contrastText: '#ffffff',
     },
     secondary: {
-      main: 'hsl(var(--secondary))',
-      contrastText: 'hsl(var(--secondary-foreground))',
+      main: '#9c27b0',
+      contrastText: '#ffffff',
     },
     background: {
-      default: 'linear-gradient(to right, #0f0f10, #1a1a1d)',
-      paper: 'hsl(var(--card))',
+      default: '#0a192f',
+      paper: '#172a45',
     },
     text: {
-      primary: 'hsl(var(--foreground))',
-      secondary: 'hsl(var(--muted-foreground))',
+      primary: '#ffffff',
+      secondary: '#b3b3b3',
     },
     action: {
-      hover: 'rgba(255, 255, 255, 0.1)',
+      hover: 'rgba(255, 255, 255, 0.15)',
     },
   },
   typography: {
     fontFamily: ['Poppins', 'sans-serif'].join(','),
+    h6: {
+      fontWeight: 600,
+    },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          scrollbarWidth: 'none',
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+          backgroundColor: '#0a192f',
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          background: 'linear-gradient(135deg, #0a192f 0%, #172a45 100%)',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
           fontWeight: 700,
           textTransform: 'inherit',
           borderRadius: 25,
-          padding: '10px 20px',
-          transition: '0.3s ease-in-out',
+          padding: '10px 24px',
+          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+          '&:hover': {
+            transform: 'translateY(-2px)',
+            boxShadow: '0 6px 15px rgba(0, 0, 0, 0.3)',
+          },
         },
         contained: {
-          background: 'linear-gradient(135deg, hsl(var(--chart-1)), hsl(var(--chart-2)))',
+          background: 'linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%)',
+          color: '#ffffff',
           '&:hover': {
-            background: 'linear-gradient(135deg, hsl(var(--chart-3)), hsl(var(--chart-4)))',
+            background: 'linear-gradient(135deg, #0d47a1 0%, #1a73e8 100%)',
           },
         },
         outlined: {
-          borderColor: 'hsl(var(--border))',
+          borderColor: 'rgba(255, 255, 255, 0.3)',
+          color: '#ffffff',
           '&:hover': {
-            background: 'hsl(var(--muted))',
+            background: 'rgba(255, 255, 255, 0.1)',
+            borderColor: 'rgba(255, 255, 255, 0.5)',
           },
         },
       },

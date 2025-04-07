@@ -1,100 +1,124 @@
-/* Dark Theme Styles */
-
+/* Dark Theme Base Styles */
 :root {
-  --primary-bg: #121212;
-  --secondary-bg: #1e1e1e;
-  --accent: #bb86fc;
+  --primary-bg: #0a192f;
+  --secondary-bg: #172a45;
+  --accent: #1a73e8;
+  --accent-light: #64b5f6;
   --text-primary: #ffffff;
   --text-secondary: #b3b3b3;
-  --border-color: #292929;
+  --border-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Apply dark theme to all base elements */
 html,
 body {
-  padding: 0;
+  background-color: var(--primary-bg) !important;
+  color: var(--text-primary) !important;
+  min-height: 100vh;
   margin: 0;
-  scroll-behavior: smooth;
-  background-color: var(--primary-bg);
-  color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
-a,
+/* Material-UI component overrides */
+.MuiPaper-root {
+  background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--primary-bg) 100%) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.MuiDrawer-paper {
+  background: linear-gradient(135deg, #0d1a30 0%, #0a192f 100%) !important;
+}
+
+.MuiBackdrop-root {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-light);
+}
+
+/* Link styles */
+a {
+  color: var(--accent-light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
 a:hover {
   color: var(--accent);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
-a.MuiButton-contained:hover {
-  color: rgba(255, 255, 255, 1);
-}
-
-* {
-  box-sizing: border-box;
-}
-
+/* Active nav link styles */
 .activeNavLink {
-  background-color: var(--secondary-bg) !important;
-  pointer-events: none;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 4px;
+  position: relative;
 }
 
-.rounded {
-  border-radius: 25px;
-  border: 1px solid var(--border-color);
+.activeNavLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 2px;
+  background: var(--accent);
 }
+
+html {
+  background-color: #0a192f;
+}
+
+body {
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+
+/* Form elements */
 
 input,
-button,
-select,
-textarea {
-  background-color: var(--secondary-bg);
-  color: var(--text-primary);
+textarea,
+select {
+  background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-color);
-  padding: 10px;
-  border-radius: 5px;
+  color: var(--text-primary);
+  padding: 10px 12px;
+  border-radius: 4px;
 }
 
 input:focus,
-button:focus,
-select:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 5px var(--accent);
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
 }
 
-.fadeInUp {
-  animation: fadeInUp 0.3s ease;
+/* Tables */
+.MuiTable-root {
+  background-color: transparent !important;
 }
 
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.pulse {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  box-shadow: 0 0 0 rgba(220, 53, 69, 1);
-  animation: pulse 2s infinite;
-  border: 3px solid rgba(255, 255, 255, 0.7);
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(220, 53, 69, 1);
-  }
-  70% {
-    box-shadow: 0 0 0 calc(16 * 1px * 1) rgba(220, 53, 69, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
-  }
+.MuiTableCell-root {
+  border-bottom: 1px solid var(--border-color) !important;
 }

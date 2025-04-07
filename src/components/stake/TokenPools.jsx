@@ -12,14 +12,21 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 const stakingPoolData = [
   { label: 'APR', value: '0.000%' },
-  { label: 'Wallet Balance', value: '0.0 $' },
-  { label: 'Staked', value: '0.0 $' },
-  { label: 'Earned', value: '0.0000 $' },
+  { label: 'Wallet Balance', value: '0.0 $ELO' },
+  { label: 'Staked', value: '0.0 $ELO' },
+  { label: 'Earned', value: '0.0000 $ELO' },
 ];
 
 const CardLabel = ({ text }) => {
   return (
-    <Typography color="text.secondary" sx={{ fontWeight: 500 }} variant="body1" display="block">
+    <Typography
+      color="text.secondary"
+      sx={{
+        fontWeight: 500,
+        fontSize: '0.95rem',
+      }}
+      variant="body1"
+    >
       {text}
     </Typography>
   );
@@ -27,7 +34,13 @@ const CardLabel = ({ text }) => {
 
 const CardValue = ({ text }) => {
   return (
-    <Typography color="text.primary" sx={{ fontWeight: 500, textAlign: 'right' }}>
+    <Typography
+      color="text.primary"
+      sx={{
+        fontWeight: 600,
+        fontSize: '1rem',
+      }}
+    >
       {text}
     </Typography>
   );
@@ -37,82 +50,108 @@ const TokenPools = () => {
   const [amountToStake, setAmountToStake] = useState('');
 
   return (
-    <Grid container spacing={0} justifyContent="center">
-      <Grid item xs={12} md={5}>
+    <Grid container justifyContent="center">
+      <Grid item xs={12} md={6}>
         <Card
-          elevation={4}
           sx={{
-            borderRadius: 10,
-            p: 2,
-            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)',
-            backgroundColor: 'background.paper',
+            borderRadius: 3,
+            p: 3,
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+            background: 'linear-gradient(135deg, rgba(23, 42, 69, 0.8), rgba(10, 25, 47, 0.9))',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(8px)',
           }}
         >
           <CardContent>
             <Typography
-              color="text.primary"
-              sx={{ fontWeight: 'bold', mb: 4, textAlign: 'center' }}
               variant="h5"
+              sx={{
+                fontWeight: 'bold',
+                mb: 4,
+                textAlign: 'center',
+                color: '#64b5f6',
+              }}
             >
-              Staking Pool
+              $ELO Staking Pool
             </Typography>
-            {stakingPoolData.map((item, i) => (
-              <Stack
-                direction="row"
-                justifyContent="space-between"
-                alignItems="center"
-                mb={2}
-                key={i}
-              >
-                <CardLabel text={item.label} />
-                <CardValue text={item.value} />
-              </Stack>
-            ))}
-            <Box mt={3}>
-              <TextField
-                type="number"
-                id="amount-to-stake"
-                label="Amount to stake"
-                variant="outlined"
-                fullWidth
-                value={amountToStake}
-                onChange={(e) => setAmountToStake(e.target.value)}
-                InputProps={{
-                  startAdornment: <InputAdornment position="start">$</InputAdornment>,
-                }}
-                helperText="Maximum amount is 0"
-                sx={{
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: 8,
-                    backgroundColor: 'rgba(0, 0, 0, 0.05)',
-                  },
-                  '& .MuiInputLabel-root': {
-                    fontWeight: 600,
-                    color: 'text.primary',
-                  },
-                  '& .MuiFormHelperText-root': {
-                    color: 'text.secondary',
-                  },
-                  '& .MuiInputBase-input': {
-                    color: '#FFFFFF',
-                  },
-                }}
-              />
+
+            <Box sx={{ mb: 3 }}>
+              {stakingPoolData.map((item, i) => (
+                <Stack
+                  direction="row"
+                  justifyContent="space-between"
+                  alignItems="center"
+                  mb={2.5}
+                  key={i}
+                >
+                  <CardLabel text={item.label} />
+                  <CardValue text={item.value} />
+                </Stack>
+              ))}
             </Box>
+
+            <TextField
+              type="number"
+              label="Amount to stake"
+              variant="outlined"
+              fullWidth
+              value={amountToStake}
+              onChange={(e) => setAmountToStake(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start" sx={{ color: '#ffffff' }}>
+                    $ELO
+                  </InputAdornment>
+                ),
+                sx: {
+                  borderRadius: 2,
+                  '& input': {
+                    py: 1.8,
+                    color: '#ffffff !important',
+                  },
+                },
+              }}
+              InputLabelProps={{
+                sx: {
+                  color: 'rgba(255, 255, 255, 0.7)',
+                },
+              }}
+              sx={{
+                mb: 2,
+                '& .MuiOutlinedInput-root': {
+                  color: '#ffffff',
+                  '& fieldset': {
+                    borderColor: 'rgba(255, 255, 255, 0.3)',
+                  },
+                  '&:hover fieldset': {
+                    borderColor: 'rgba(255, 255, 255, 0.5)',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#64b5f6',
+                  },
+                },
+              }}
+            />
           </CardContent>
-          <CardActions>
+
+          <CardActions sx={{ px: 2, pb: 2 }}>
             <Button
               fullWidth
               variant="contained"
-              color="primary"
               sx={{
-                borderRadius: 8,
+                py: 1.8,
+                borderRadius: 2,
                 fontWeight: 600,
-                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-                '&:hover': { boxShadow: '0 6px 16px rgba(0, 0, 0, 0.12)' },
+                background: 'linear-gradient(135deg, #1a73e8 0%, #64b5f6 100%)',
+                boxShadow: '0 4px 15px rgba(26, 115, 232, 0.3)',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 6px 20px rgba(26, 115, 232, 0.4)',
+                },
+                transition: 'all 0.3s ease',
               }}
             >
-              Stake
+              Stake Tokens
             </Button>
           </CardActions>
         </Card>

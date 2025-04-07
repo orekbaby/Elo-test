@@ -15,29 +15,29 @@ import StepLabel from '@mui/material/StepLabel';
 
 const stakingGuides = [
   {
-    title: 'Staking ',
+    title: 'How to Stake',
     details: [
-      'Connect wallet',
-      "Press approve to allow your ... to work the staking contract. Please wait for the transaction to confirm. (If you don't see the 'Approve', button you are likely already approved.)",
-      'Enter the amount you want to stake in the input box.',
-      'Press the button labeled stake. Please wait for the transaction to confirm.',
+      'Connect your wallet to the platform',
+      'Approve the staking contract to access your tokens',
+      'Enter the amount you wish to stake',
+      'Confirm the staking transaction',
     ],
   },
   {
-    title: 'Checking balance',
-    summary:
-      "Your stake balance should appear at the top of the staking card, labeled 'staked'. If your staked balance appears as 0.0, and you are sure you have approved and staked, try these steps:",
+    title: 'Checking Your Balance',
     details: [
-      'Refresh the page (It takes some time for your balances to show up).',
-      'Ensure the correct wallet address is connected. (Your connected wallet address is shown at the bottom of the staking page).',
+      'Your staked balance appears at the top of the staking card',
+      "Refresh the page if balances don't appear immediately",
+      "Ensure you're connected with the correct wallet",
     ],
   },
   {
-    title: 'Unstaking',
+    title: 'Unstaking Tokens',
     details: [
-      'Connect wallet',
-      'Check you have a staked coins to withdraw (see section above).',
-      "Press the 'Claim & Unstake' button. Please allow some time for the transaction to confirm.",
+      'Navigate to the staking section',
+      'Click on the "Claim & Unstake" button',
+      'Confirm the transaction in your wallet',
+      'Wait for the transaction to complete',
     ],
   },
 ];
@@ -53,42 +53,80 @@ export default function StakingGuide({ open, handleClose }) {
     <Dialog
       open={open}
       onClose={handleClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-      BackdropProps={{
-        style: { backgroundColor: 'rgba(111, 126, 140, 0.2)', backdropFilter: 'blur(2px)' },
-      }}
+      maxWidth="sm"
+      fullWidth
       PaperProps={{
-        style: { borderRadius: 25, boxShadow: 'none' },
+        sx: {
+          borderRadius: 3,
+          background: 'linear-gradient(135deg, rgba(23, 42, 69, 0.95), rgba(10, 25, 47, 0.95))',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
+          backdropFilter: 'blur(12px)',
+          p: 1,
+        },
       }}
     >
-      <DialogTitle id="alert-dialog-title" sx={{ p: 3 }}>
-        How To Stake
+      <DialogTitle
+        sx={{
+          textAlign: 'center',
+          color: '#64b5f6',
+          fontWeight: 'bold',
+          pt: 3,
+          pb: 1,
+        }}
+      >
+        Staking Guide
       </DialogTitle>
-      <DialogContent>
+
+      <DialogContent sx={{ px: 3, py: 0 }}>
         {stakingGuides.map((data, i) => (
-          <Accordion key={i} expanded={expanded === i} onChange={handleChange(i)} elevation={0}>
+          <Accordion
+            key={i}
+            expanded={expanded === i}
+            onChange={handleChange(i)}
+            sx={{
+              background: 'transparent',
+              boxShadow: 'none',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              mb: 2,
+              '&:before': {
+                display: 'none',
+              },
+            }}
+          >
             <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1bh-content"
-              id="panel1bh-header"
+              expandIcon={<ExpandMoreIcon sx={{ color: '#64b5f6' }} />}
+              sx={{
+                '& .MuiAccordionSummary-content': {
+                  alignItems: 'center',
+                },
+              }}
             >
-              <Typography variant="h6" sx={{ width: '50%', flexShrink: 0, fontWeight: 500 }}>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: 600,
+                  color: expanded === i ? '#64b5f6' : 'text.primary',
+                }}
+              >
                 {data.title}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
-              {data.summary && (
-                <Typography sx={{ color: 'text.secondary', mb: 2 }}>{data?.summary}</Typography>
-              )}
-              <Stepper activeStep={-1} orientation="vertical">
+
+            <AccordionDetails sx={{ pt: 0, pb: 3 }}>
+              <Stepper
+                orientation="vertical"
+                connector={null}
+                sx={{
+                  '& .MuiStepLabel-label': {
+                    color: 'text.primary',
+                    fontWeight: 500,
+                  },
+                }}
+              >
                 {data.details.map((item, i) => (
-                  <Step key={i}>
-                    <StepLabel>
-                      <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                        {item}
-                      </Typography>
-                    </StepLabel>
+                  <Step key={i} active>
+                    <StepLabel>{item}</StepLabel>
                   </Step>
                 ))}
               </Stepper>
@@ -96,9 +134,24 @@ export default function StakingGuide({ open, handleClose }) {
           </Accordion>
         ))}
       </DialogContent>
-      <DialogActions sx={{ p: 2 }}>
-        <Button onClick={handleClose} autoFocus>
-          GOT IT
+
+      <DialogActions sx={{ p: 3, pt: 1 }}>
+        <Button
+          onClick={handleClose}
+          sx={{
+            px: 4,
+            py: 1,
+            borderRadius: 2,
+            fontWeight: 600,
+            background: 'linear-gradient(135deg, #1a73e8 0%, #64b5f6 100%)',
+            '&:hover': {
+              transform: 'translateY(-2px)',
+              boxShadow: '0 4px 12px rgba(26, 115, 232, 0.3)',
+            },
+            transition: 'all 0.3s ease',
+          }}
+        >
+          Got It
         </Button>
       </DialogActions>
     </Dialog>
